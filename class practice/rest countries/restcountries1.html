@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest countries1</title>
+</head>
+<body>
+    <h4>Country List</h4>
+    <ol id="countryList"></ol>
+    
+
+    <script>
+
+    fetch('https://restcountries.com/v3.1/all')
+    .then((countries) =>{
+        return countries.json()
+    })
+    .then((data) => {
+        console.log(data)
+        let countryList = document.getElementById('countryList');
+        for (const country of data) {
+            let countryListitem = document.createElement('li')
+            countryListitem.textContent = country.capital ;
+            countryList.appendChild(countryListitem);
+
+        }
+         })
+       .catch((error) => {
+        console.log("error", error)
+       })  
+
+    </script>
+    
+</body>
+</html>
